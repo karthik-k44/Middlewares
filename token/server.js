@@ -1,23 +1,9 @@
 import express from "express"
-
 const app = express()
+import Token from "./middleWares/token.js"
+import validation from "./middleWares/validation.js"
 
-function Token (req,res,next){
-    console.log("Creating Token")
-    setInterval(() => {
-        const TOKEN ="123456"
-        req.token=TOKEN
-        next()
-    }, 1000)
-}
 
-function validation (req,res,next){
-    if(req.token)
-    {
-        console.log("Token is valid")
-        next()  
-    }
-}
 app.use(Token)
 app.use(validation)
 app.get('/', (req, res) => {
