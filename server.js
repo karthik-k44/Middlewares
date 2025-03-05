@@ -2,7 +2,11 @@ import express from "express"
 
 const app = express()
 
+function Token (req,res,next){
+    console.log("Creating Token")
+}
 app.get('/', (req, res) => {
+    cconsole.log("Home page ")
     res.send("hello This is home page ")
 })
 
