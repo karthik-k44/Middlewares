@@ -1,13 +1,18 @@
 import express from "express"
 
-const appp = express()
+const app = express()
 
-appp.get('/',(req,res)=>{
+app.get('/', (req, res) => {
     res.send("hello This is home page ")
 })
 
-appp.get("/user", (req,res)=>{
+app.get("/user", (req, res) => {
     res.send("This is a user page ")
 })
 
-appp.listen(3000)
+app.get("*",(req, res) => {
+    res.status(404).send("404 Page Not Found")
+})
+
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
